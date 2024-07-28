@@ -2,7 +2,24 @@ import ApiList from "@/components/main/ApiList";
 import Link from "next/link";
 
 const Main = () => {
-  const list = ["서울", "경기", "강원", "제주"];
+  const list = [
+    "서울",
+    "경기",
+    "인천",
+    "강원",
+    "충북",
+    "충남",
+    "대전",
+    "경북",
+    "경남",
+    "대구",
+    "울산",
+    "부산",
+    "전북",
+    "전남",
+    "광주",
+    "제주",
+  ];
 
   return (
     <div className="w-full max-w-[928px] mx-auto">

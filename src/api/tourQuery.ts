@@ -1,5 +1,5 @@
 import { useQuery } from "@tanstack/react-query";
-import { baseUrl, detailUrl } from "./baseApi";
+import { baseUrl, detailImageUrl, detailUrl } from "./baseApi";
 import { DetailItemType } from "@/type/apiType";
 
 export const useGetTourList = (keyword: string, numOfRows: Number) => {
@@ -26,4 +26,16 @@ export const useGetDetailItem = (contentId: string) => {
       })
       .then((res) => res.data.response.body.items.item);
   return useQuery({ queryKey: [`detailItem${contentId}`], queryFn });
+};
+
+export const useGetDetailItemImage = (contentId: string) => {
+  const queryFn = () =>
+    detailImageUrl
+      .get("", {
+        params: {
+          contentId,
+        },
+      })
+      .then((res) => res.data.response.body.items.item);
+  return useQuery({ queryKey: [`detailImages${contentId}`], queryFn });
 };
