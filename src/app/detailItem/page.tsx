@@ -22,7 +22,7 @@ const DetailItem = () => {
     }
   }, [detailImages]);
 
-  if (isLoading && detailLoading) return <div>로딩중...</div>;
+  if (detailLoading) return <div>로딩중...</div>;
 
   const next = () => {
     setImagesIndex((prev) => (prev + 1 >= detailImages.length ? 0 : prev + 1));
@@ -36,30 +36,32 @@ const DetailItem = () => {
   return (
     <div>
       {data?.map((item) => (
-        <div key={item.contentid} className="relative">
-          <div className="absolute z-50 flex">
-            <div
-              className="w-[50px] h-[50px] rounded-full bg-black"
-              onClick={() => prev()}
-            ></div>
-            <div
-              className="w-[50px] h-[50px] rounded-full bg-black"
-              onClick={() => next()}
-            ></div>
-          </div>
-          <div className="w-[500px] h-[500px] rounded-xl overflow-hidden relative">
-            <Image
-              src={
-                detailImages[imagesIndex].originimgurl
-                  ? detailImages[imagesIndex].originimgurl
-                  : "images/no_image.png"
-              }
-              fill
-              sizes="1"
-              priority
-              alt="디테일 이미지"
-            />
-          </div>
+        <div key={item.contentid} className="">
+          {detailImages && imagesIndex < detailImages.length && (
+            <div className="w-[500px] h-[500px] rounded-xl overflow-hidden relative">
+              <div className="absolute z-50 flex">
+                <div
+                  className="w-[50px] h-[50px] rounded-full bg-black"
+                  onClick={() => prev()}
+                ></div>
+                <div
+                  className="w-[50px] h-[50px] rounded-full bg-black"
+                  onClick={() => next()}
+                ></div>
+              </div>
+              <Image
+                src={
+                  detailImages[imagesIndex].originimgurl
+                    ? detailImages[imagesIndex].originimgurl
+                    : "images/no_image.png"
+                }
+                fill
+                sizes="1"
+                priority
+                alt="디테일 이미지"
+              />
+            </div>
+          )}
           <p>{item.title}</p>
           <div className="w-[1000px]">
             <p dangerouslySetInnerHTML={{ __html: item.overview }} />

@@ -11,14 +11,12 @@ type ApiListProps = {
 };
 
 const ApiList = ({ area }: ApiListProps) => {
-  const { data, isLoading, error, refetch } = useGetTourList(area, 4);
+  const { data, isLoading, refetch } = useGetTourList(area, 4);
 
   useEffect(() => {
     refetch();
   }, []);
 
-  console.log("이름", area);
-  console.log(data);
   if (isLoading) return <div>로딩중...</div>;
   return (
     <div className="w-full">
