@@ -54,3 +54,12 @@ export type DetailItemType = {
     };
   };
 };
+
+export type TourImagesType = {
+  contentid: string
+  cpyrhtDivCd: string
+  imgname: string
+  originimgurl: string
+  serialnum: string
+  smallimageurl: string
+}[] 

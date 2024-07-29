@@ -15,7 +15,7 @@ const ApiList = ({ area }: ApiListProps) => {
 
   useEffect(() => {
     refetch();
-  }, []);
+  }, [data]);
 
   if (isLoading) return <div>로딩중...</div>;
   return (
