@@ -5,9 +5,9 @@ import { ApiType } from "@/type/apiType";
 import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { Suspense, useEffect } from "react";
 
-const DetailList = () => {
+const DetailListContent = () => {
   const params = useSearchParams();
   const { data, isLoading, refetch } = useGetTourList(params.get("id")!, 20);
   useEffect(() => {
@@ -15,6 +15,7 @@ const DetailList = () => {
   }, []);
 
   if (isLoading) return <div>로딩중...</div>;
+  <Suspense fallback={<div>Loading...</div>}></Suspense>;
   return (
     <div className="w-[1160px] mx-auto">
       <div className="w-full flex flex-wrap">
@@ -50,6 +51,16 @@ const DetailList = () => {
           </Link>
         ))}
       </div>
+    </div>
+  );
+};
+
+const DetailList = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <DetailListContent />
+      </Suspense>
     </div>
   );
 };

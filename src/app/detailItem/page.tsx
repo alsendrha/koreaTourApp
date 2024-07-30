@@ -4,10 +4,10 @@ import { useGetDetailItem, useGetDetailItemImage } from "@/api/tourQuery";
 import Map from "@/components/detailItem/Map";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import React, { useState } from "react";
+import React, { Suspense, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
-const DetailItem = () => {
+const DetailContent = () => {
   const params = useSearchParams();
   const { data, isLoading } = useGetDetailItem(params.get("id")!);
   const { data: detailImages, isLoading: imagesLoading } =
@@ -26,7 +26,6 @@ const DetailItem = () => {
   };
 
   if (isLoading || imagesLoading) return <div>로딩중...</div>;
-
   return (
     <div className="flex flex-col items-center my-10">
       {data?.map((item) => (
@@ -101,6 +100,16 @@ const DetailItem = () => {
           </div>
         </div>
       ))}
+    </div>
+  );
+};
+
+const DetailItem = () => {
+  return (
+    <div>
+      <Suspense fallback={<div>Loading...</div>}>
+        <DetailContent />
+      </Suspense>
     </div>
   );
 };
