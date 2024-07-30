@@ -11,7 +11,7 @@ type ApiListProps = {
 };
 
 const ApiList = ({ area }: ApiListProps) => {
-  const { data, isLoading, refetch } = useGetTourList(area, 4);
+  const { data, isLoading, refetch, isError } = useGetTourList(area, 4);
 
   useEffect(() => {
     refetch();

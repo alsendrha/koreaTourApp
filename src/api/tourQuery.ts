@@ -13,7 +13,11 @@ export const useGetTourList = (keyword: string, numOfRows: Number) => {
         },
       })
       .then((res) => res.data.response.body.items.item);
-  return useQuery({ queryKey: [`tourList${keyword}`], queryFn });
+  return useQuery({
+    queryKey: [`tourList${keyword}`],
+    queryFn,
+    initialData: [],
+  });
 };
 
 export const useGetDetailItem = (contentId: string) => {
