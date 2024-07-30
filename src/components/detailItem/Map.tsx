@@ -24,13 +24,15 @@ const Map = ({ itemX, itemY }: MapProps) => {
                 zoomControl: false,
                 scrollwheel: true,
               }}
-              onLoad={(map) => {
-                new window.google.maps.marker.AdvancedMarkerElement({
-                  position: { lat: Number(itemY), lng: Number(itemX) },
-                  map,
-                });
-              }}
-            ></GoogleMap>
+            >
+              <Marker
+                icon={{
+                  url: "/images/markerIcon.png",
+                  scaledSize: new window.google.maps.Size(50, 50),
+                }}
+                position={{ lat: Number(itemY), lng: Number(itemX) }}
+              />
+            </GoogleMap>
           )}
         </div>
       )}
