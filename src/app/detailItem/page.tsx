@@ -1,6 +1,7 @@
 "use client";
 
 import { useGetDetailItem, useGetDetailItemImage } from "@/api/tourQuery";
+import Map from "@/components/detailItem/Map";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import React, { useState } from "react";
@@ -13,13 +14,11 @@ const DetailItem = () => {
     useGetDetailItemImage(params.get("id")!);
   const [imagesIndex, setImagesIndex] = useState(0);
 
-  console.log("이건 이미지", detailImages);
   console.log("이건 데이터", data);
 
   const next = () => {
     setImagesIndex((prev) => (prev + 1 >= detailImages.length ? 0 : prev + 1));
   };
-
   const prev = () => {
     setImagesIndex((prev) =>
       prev - 1 < 0 ? detailImages.length - 1 : prev - 1
@@ -88,13 +87,17 @@ const DetailItem = () => {
                 </p>
                 <p className="mt-2">
                   <strong>홈페이지</strong>&nbsp;:&nbsp;
-                  <span dangerouslySetInnerHTML={{ __html: item.homepage }} />
+                  <span
+                    className="text-blue-400"
+                    dangerouslySetInnerHTML={{ __html: item.homepage }}
+                  />
                 </p>
               </div>
             </div>
             <div className="w-[1000px]">
               <p dangerouslySetInnerHTML={{ __html: item.overview }} />
             </div>
+            <Map itemX={item.mapx} itemY={item.mapy} />
           </div>
         </div>
       ))}
