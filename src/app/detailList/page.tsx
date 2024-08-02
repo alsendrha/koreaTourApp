@@ -14,7 +14,7 @@ const DetailListContent = () => {
     refetch();
   }, []);
 
-  if (isLoading) return <div>로딩중...</div>;
+  if (isLoading) return <div>로딩중....</div>;
   <Suspense fallback={<div>Loading...</div>}></Suspense>;
   return (
     <div className="w-[1160px] mx-auto">
