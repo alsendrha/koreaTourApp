@@ -75,7 +75,7 @@ const DetailContent = () => {
                   />
                 </div>
               )}
-              <div className="ml-10">
+              <div className="ml-10 w-[380px]">
                 <p>
                   <strong>주소</strong>&nbsp;:&nbsp;{item.addr1}
                   &nbsp;{item.addr2}
