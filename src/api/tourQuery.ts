@@ -17,6 +17,7 @@ export const useGetTourList = (keyword: string, numOfRows: Number) => {
     queryKey: [`tourList${keyword}`],
     queryFn,
     initialData: [],
+    enabled: !!keyword,
   });
 };
 
