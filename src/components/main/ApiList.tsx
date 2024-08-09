@@ -3,7 +3,6 @@
 import { useGetTourList } from "@/api/tourQuery";
 import ImageComponent from "@/elements/ImageComponent";
 import { ApiType } from "@/type/apiType";
-import Image from "next/image";
 import Link from "next/link";
 import React, { useEffect } from "react";
 
@@ -17,9 +16,6 @@ const ApiList = ({ area }: ApiListProps) => {
   useEffect(() => {
     refetch();
   }, [area, refetch]);
-
-  console.log(data);
-  console.log(isLoading);
 
   if (isLoading) return <div>로딩중...</div>;
   return (
