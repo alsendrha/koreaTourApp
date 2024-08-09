@@ -2,6 +2,7 @@
 
 import { useGetTourList } from "@/api/tourQuery";
 import ImageComponent from "@/elements/ImageComponent";
+import { useMenuNumberStore } from "@/store/store";
 import { ApiType } from "@/type/apiType";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
@@ -9,10 +10,17 @@ import React, { Suspense, useEffect } from "react";
 
 const DetailListContent = () => {
   const params = useSearchParams();
-  const { data, isLoading, refetch } = useGetTourList(params.get("id")!, 20);
+  const { menuNumber } = useMenuNumberStore();
+  const { data, isLoading, refetch } = useGetTourList(
+    params.get("id")!,
+    20,
+    menuNumber
+  );
+
+  console.log("데이터", data);
   useEffect(() => {
     refetch();
-  }, []);
+  }, [menuNumber]);
 
   if (isLoading) return <div>로딩중....</div>;
   <Suspense fallback={<div>Loading...</div>}></Suspense>;

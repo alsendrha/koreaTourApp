@@ -2,7 +2,11 @@ import { useQuery } from "@tanstack/react-query";
 import { baseUrl, detailImageUrl, detailUrl } from "./baseApi";
 import { DetailItemType } from "@/type/apiType";
 
-export const useGetTourList = (keyword: string, numOfRows: Number) => {
+export const useGetTourList = (
+  keyword: string,
+  numOfRows: number,
+  contentType: number
+) => {
   const queryFn = () =>
     baseUrl
       .get("", {
@@ -10,6 +14,7 @@ export const useGetTourList = (keyword: string, numOfRows: Number) => {
           numOfRows,
           pageNo: 1,
           keyword,
+          contentTypeId: contentType,
         },
       })
       .then((res) => res.data.response.body.items.item);
@@ -21,12 +26,13 @@ export const useGetTourList = (keyword: string, numOfRows: Number) => {
   });
 };
 
-export const useGetDetailItem = (contentId: string) => {
+export const useGetDetailItem = (contentId: string, contentType: number) => {
   const queryFn = () =>
     detailUrl
       .get<DetailItemType>("", {
         params: {
           contentId,
+          contentTypeId: contentType,
         },
       })
       .then((res) => res.data.response.body.items.item);

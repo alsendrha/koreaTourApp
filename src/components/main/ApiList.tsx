@@ -2,6 +2,7 @@
 
 import { useGetTourList } from "@/api/tourQuery";
 import ImageComponent from "@/elements/ImageComponent";
+import { useMenuNumberStore } from "@/store/store";
 import { ApiType } from "@/type/apiType";
 import Link from "next/link";
 import React, { useEffect } from "react";
@@ -11,12 +12,13 @@ type ApiListProps = {
 };
 
 const ApiList = ({ area }: ApiListProps) => {
-  const { data, isLoading, refetch } = useGetTourList(area, 4);
-
+  const { menuNumber } = useMenuNumberStore();
+  console.log("menuNumber", menuNumber);
+  const { data, isLoading, refetch } = useGetTourList(area, 4, menuNumber);
   useEffect(() => {
     refetch();
-  }, [area, refetch]);
-
+  }, [area, refetch, menuNumber]);
+  console.log("데이터", data);
   if (isLoading) return <div>로딩중...</div>;
   return (
     <div className="w-full">

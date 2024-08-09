@@ -10,7 +10,6 @@ export const baseUrl = axios.create({
     _type: "json",
     listYN: "Y",
     arrange: "A",
-    contentTypeId: 12,
   },
 });
 
@@ -22,7 +21,6 @@ export const detailUrl = axios.create({
     MobileOS: "ETC",
     MobileApp: "AppTest",
     _type: "json",
-    contentTypeId: 12,
     defaultYN: "Y",
     overviewYN: "Y",
     numOfRows: 1,

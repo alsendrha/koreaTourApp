@@ -3,13 +3,15 @@
 import { useGetDetailItem, useGetDetailItemImage } from "@/api/tourQuery";
 import Map from "@/components/detailItem/Map";
 import ImageComponent from "@/elements/ImageComponent";
+import { useMenuNumberStore } from "@/store/store";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 
 const DetailContent = () => {
   const params = useSearchParams();
-  const { data, isLoading } = useGetDetailItem(params.get("id")!);
+  const { menuNumber } = useMenuNumberStore();
+  const { data, isLoading } = useGetDetailItem(params.get("id")!, menuNumber);
   const { data: detailImages, isLoading: imagesLoading } =
     useGetDetailItemImage(params.get("id")!);
   const [imagesIndex, setImagesIndex] = useState(0);
