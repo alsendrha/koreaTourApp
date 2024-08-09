@@ -2,7 +2,7 @@
 
 import { useGetDetailItem, useGetDetailItemImage } from "@/api/tourQuery";
 import Map from "@/components/detailItem/Map";
-import Image from "next/image";
+import ImageComponent from "@/elements/ImageComponent";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense, useState } from "react";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
@@ -36,7 +36,7 @@ const DetailContent = () => {
           <div className="">
             <div className="w-full flex mb-10 justify-center">
               {detailImages ? (
-                <div className="w-[650px] h-[500px] rounded-xl overflow-hidden relative drag-prevent">
+                <div className="relative w-[650px] h-[500px]">
                   <div
                     className="w-[30px] h-[30px] absolute flex justify-center group items-center cursor-pointer rounded-full bg-black bg-opacity-50 hover:bg-white hover:bg-opacity-25 z-10 top-1/2 left-2 transform -translate-y-1/2"
                     onClick={() => prev()}
@@ -49,32 +49,15 @@ const DetailContent = () => {
                   >
                     <IoIosArrowForward className="text-lg text-white group-hover:text-black" />
                   </div>
-
-                  <Image
-                    src={
-                      detailImages[imagesIndex].originimgurl
-                        ? detailImages[imagesIndex].originimgurl
-                        : "/images/no_image.png"
-                    }
-                    fill
-                    sizes="1"
-                    className="object-cover"
-                    priority
-                    alt="디테일 이미지"
+                  <ImageComponent
+                    imageData={detailImages[imagesIndex].originimgurl}
+                    size="detail"
                   />
                 </div>
               ) : (
-                <div className="w-[650px] h-[500px] rounded-xl overflow-hidden relative drag-prevent">
-                  <Image
-                    src={"/images/no_image.png"}
-                    fill
-                    sizes="1"
-                    className="object-cover"
-                    priority
-                    alt="디테일 이미지"
-                  />
-                </div>
+                <ImageComponent imageData="" size="detail" />
               )}
+
               <div className="ml-10 w-[380px]">
                 <p>
                   <strong>주소</strong>&nbsp;:&nbsp;{item.addr1}

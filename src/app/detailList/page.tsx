@@ -1,8 +1,8 @@
 "use client";
 
 import { useGetTourList } from "@/api/tourQuery";
+import ImageComponent from "@/elements/ImageComponent";
 import { ApiType } from "@/type/apiType";
-import Image from "next/image";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import React, { Suspense, useEffect } from "react";
@@ -30,18 +30,7 @@ const DetailListContent = () => {
             }}
           >
             <div className="mx-4 my-3">
-              <div className="w-[200px] h-[200px] rounded-xl overflow-hidden relative">
-                <Image
-                  src={
-                    tour.firstimage ? tour.firstimage : "/images/no_image.png"
-                  }
-                  fill
-                  sizes="1"
-                  className="object-cover"
-                  alt="이미지"
-                  priority
-                />
-              </div>
+              <ImageComponent imageData={tour.firstimage} size="list" />
               <div className="w-full max-w-[200px]">
                 <p className="whitespace-nowrap text-ellipsis overflow-hidden">
                   {tour.title}
