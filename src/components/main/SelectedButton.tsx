@@ -21,7 +21,7 @@ const SelectedButton = () => {
 
   return (
     <div
-      className="border w-[100px] flex items-center justify-center cursor-pointer relative"
+      className="border w-[100px] flex items-center justify-center cursor-pointer rounded-xl ml-10 relative"
       onClick={() => setonSelected(!onSelected)}
     >
       <p>선택</p>
