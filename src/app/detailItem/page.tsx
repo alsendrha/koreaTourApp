@@ -35,7 +35,7 @@ const DetailContent = () => {
           <div className="mb-10">
             <h1 className="text-5xl font-bold text-center">{item.title}</h1>
           </div>
-          <div className="">
+          <div>
             <div className="w-full flex mb-10 justify-center">
               {detailImages ? (
                 <div className="relative w-[650px] h-[500px]">
