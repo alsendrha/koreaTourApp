@@ -18,7 +18,7 @@ const ApiList = ({ area }: ApiListProps) => {
   useEffect(() => {
     refetch();
   }, [area, refetch, menuNumber]);
-  console.log("데이터", data);
+
   if (isLoading) return <div>로딩중...</div>;
   return (
     <div className="w-full">
