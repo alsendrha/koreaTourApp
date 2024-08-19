@@ -57,7 +57,7 @@ const DetailContent = () => {
                   />
                 </div>
               ) : (
-                <ImageComponent imageData="" size="detail" />
+                <ImageComponent imageData={data[0].firstimage} size="detail" />
               )}
 
               <div className="ml-10 w-[380px]">
