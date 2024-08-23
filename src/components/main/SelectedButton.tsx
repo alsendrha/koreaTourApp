@@ -28,7 +28,7 @@ const SelectedButton = () => {
           {menuList.map((menu) => (
             <li
               key={menu.id}
-              className="border w-full first:rounded-t-xl last:rounded-b-xl flex items-center justify-center border-b-0 last:border-b"
+              className="border py-2 w-full hover:bg-gray-400 hover:text-white first:rounded-t-xl last:rounded-b-xl flex items-center justify-center border-b-0 last:border-b"
               onClick={() => {
                 setMenuNumber(menu.number), setButtonName(menu.name);
               }}
