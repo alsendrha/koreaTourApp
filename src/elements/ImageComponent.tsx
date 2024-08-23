@@ -1,5 +1,6 @@
 import Image from "next/image";
 import React from "react";
+import { twMerge } from "tailwind-merge";
 
 type ImageComponentProps = {
   imageData: string;
@@ -13,7 +14,12 @@ const ImageComponent = ({ imageData, size }: ImageComponentProps) => {
   };
 
   return (
-    <div className={`${imageSize[size]} rounded-xl overflow-hidden relative`}>
+    <div
+      className={twMerge(
+        "rounded-xl overflow-hidden relative",
+        imageSize[size]
+      )}
+    >
       <Image
         src={imageData ? imageData : "/images/no_image.png"}
         fill

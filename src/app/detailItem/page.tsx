@@ -2,6 +2,7 @@
 
 import { useGetDetailItem, useGetDetailItemImage } from "@/api/tourQuery";
 import Map from "@/components/detailItem/Map";
+import IButton from "@/elements/Button";
 import ImageComponent from "@/elements/ImageComponent";
 import { useMenuNumberStore } from "@/store/store";
 import { useSearchParams } from "next/navigation";
@@ -39,18 +40,20 @@ const DetailContent = () => {
             <div className="w-full flex mb-10 justify-center">
               {detailImages ? (
                 <div className="relative w-[650px] h-[500px]">
-                  <div
-                    className="w-[30px] h-[30px] absolute flex justify-center group items-center cursor-pointer rounded-full bg-black bg-opacity-50 hover:bg-white hover:bg-opacity-25 z-10 top-1/2 left-2 transform -translate-y-1/2"
+                  <IButton
+                    type="imagePN"
+                    position="left"
                     onClick={() => prev()}
                   >
                     <IoIosArrowBack className="text-lg text-white group-hover:text-black" />
-                  </div>
-                  <div
-                    className="w-[30px] h-[30px] absolute flex justify-center group items-center cursor-pointer rounded-full bg-black bg-opacity-50 hover:bg-white hover:bg-opacity-25 z-10 top-1/2 right-2 transform -translate-y-1/2"
+                  </IButton>
+                  <IButton
+                    type="imagePN"
+                    position="right"
                     onClick={() => next()}
                   >
                     <IoIosArrowForward className="text-lg text-white group-hover:text-black" />
-                  </div>
+                  </IButton>
                   <ImageComponent
                     imageData={detailImages[imagesIndex].originimgurl}
                     size="detail"

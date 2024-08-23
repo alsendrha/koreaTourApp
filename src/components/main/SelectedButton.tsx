@@ -1,11 +1,12 @@
 "use client";
 
+import IButton from "@/elements/Button";
 import { useMenuNumberStore } from "@/store/store";
 import React, { useState } from "react";
 
 const SelectedButton = () => {
   const [onSelected, setonSelected] = useState(false);
-
+  const [buttonName, setButtonName] = useState("선택");
   const { setMenuNumber } = useMenuNumberStore();
 
   const menuList = [
@@ -20,25 +21,24 @@ const SelectedButton = () => {
   ];
 
   return (
-    <div
-      className="border w-[100px] flex items-center justify-center cursor-pointer rounded-xl ml-10 relative"
-      onClick={() => setonSelected(!onSelected)}
-    >
-      <p>선택</p>
+    <IButton type="selected" onClick={() => setonSelected(!onSelected)}>
+      <p>{buttonName}</p>
       {onSelected && (
-        <ul className="absolute top-[24px] w-full flex flex-col items-center justify-center bg-white z-10">
+        <ul className="absolute top-[40px] w-full flex flex-col items-center justify-center bg-white z-10">
           {menuList.map((menu) => (
             <li
               key={menu.id}
-              className="border w-full flex items-center justify-center border-b-0 last:border-b"
-              onClick={() => setMenuNumber(menu.number)}
+              className="border w-full first:rounded-t-xl last:rounded-b-xl flex items-center justify-center border-b-0 last:border-b"
+              onClick={() => {
+                setMenuNumber(menu.number), setButtonName(menu.name);
+              }}
             >
               {menu.name}
             </li>
           ))}
         </ul>
       )}
-    </div>
+    </IButton>
   );
 };
 
