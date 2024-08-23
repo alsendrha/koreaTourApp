@@ -5,8 +5,8 @@ type IButtonProps = {
   children?: React.ReactNode;
   title?: string;
   position?: "default" | "left" | "right";
-  type: "default" | "imagePN" | "selected";
-  onClick: () => void;
+  type?: "default" | "imagePN" | "selected";
+  onClick?: () => void;
 };
 
 const IButton = ({
