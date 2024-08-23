@@ -9,7 +9,6 @@ const ReactQueryProvider = ({ children }: PropsWithChildren) => {
     defaultOptions: {
       queries: {
         staleTime: 60 * 1000,
-        gcTime: 60 * 1000,
       },
     },
   });
