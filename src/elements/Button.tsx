@@ -19,9 +19,9 @@ const IButton = ({
   const buttonType = {
     default: "",
     imagePN:
-      "w-[30px] h-[30px] absolute flex justify-center group items-center cursor-pointer rounded-full bg-black bg-opacity-50 hover:bg-white hover:bg-opacity-25 z-10 top-1/2 transform -translate-y-1/2",
+      "w-[30px] h-[30px] absolute flex justify-center group items-center rounded-full bg-black bg-opacity-50 hover:bg-white hover:bg-opacity-25 z-10 top-1/2 transform -translate-y-1/2",
     selected:
-      "border w-[110px] h-[40px] flex items-center justify-center cursor-pointer rounded-xl ml-10 relative",
+      "border w-[110px] h-[40px] flex items-center justify-center rounded-xl ml-10 relative",
     more: "border rounded-full px-3 py-1",
   };
 
@@ -33,7 +33,11 @@ const IButton = ({
 
   return (
     <button
-      className={twMerge("", buttonType[type], positionList[position])}
+      className={twMerge(
+        "cursor-pointer",
+        buttonType[type],
+        positionList[position]
+      )}
       onClick={onClick}
     >
       {children ? children : title}
