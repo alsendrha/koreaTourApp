@@ -1,5 +1,6 @@
 import ApiList from "@/components/main/ApiList";
 import SelectedButton from "@/components/main/SelectedButton";
+import IButton from "@/elements/Button";
 import Link from "next/link";
 
 const Main = () => {
@@ -38,7 +39,7 @@ const Main = () => {
                   },
                 }}
               >
-                <p className="border rounded-full px-3 py-1">더보기</p>
+                <IButton type="more" title="더보기" />
               </Link>
             </div>
             <ApiList area={area} />
